@@ -61,9 +61,9 @@ var dialectsMap = map[string]Dialect{}
 
 func newDialect(name string, db SQLCommon) Dialect {
 	if value, ok := dialectsMap[name]; ok {
-		dialect := reflect.New(reflect.TypeOf(value).Elem()).Interface().(Dialect)
-		dialect.SetDB(db)
-		return dialect
+		//dialect := reflect.New(reflect.TypeOf(value).Elem()).Interface().(Dialect)
+		value.SetDB(db)
+		return value
 	}
 
 	fmt.Printf("`%v` is not officially supported, running under compatibility mode.\n", name)
